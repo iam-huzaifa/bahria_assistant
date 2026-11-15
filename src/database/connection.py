@@ -9,6 +9,7 @@ engine = create_engine(
     pool_pre_ping=True
 )
 
+
 # Test database connection
 def test_connection():
 
