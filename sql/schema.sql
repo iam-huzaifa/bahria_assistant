@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS answer_cache (
 );
 
 
+
 -- Create indexes for faster searches
 CREATE INDEX IF NOT EXISTS idx_student_results_session
 ON student_results(session_id);
