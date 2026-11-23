@@ -16,7 +16,7 @@ def check_passing_grade(grade):
         "A+", "A", "A-",
         "B+", "B", "B-",
         "C+", "C", "C-",
-        "D"
+        "D" , "D+", "D-"
     }
 
     if grade == "F":
@@ -145,9 +145,25 @@ def parse_lms_results(raw_text):
         if len(row) < len(headers):
             continue
 
+        # Skip repeated header rows
+        row_values = [
+            cell.strip().lower()
+            for cell in row
+        ]
+
+        if "code" in row_values and "grade" in row_values:
+            continue
+
         course_code = row[column_indexes["code"]].strip().upper()
         course_name = row[column_indexes["title"]].strip()
         grade = row[column_indexes["grade"]].strip().upper()
+
+        # Skip accidental column headings
+        if course_code in ["CODE", "COURSE CODE"]:
+            continue
+
+        if grade == "GRADE":
+            continue
 
         # Ignore invalid or empty rows
         if not course_code or not course_name or not grade:
