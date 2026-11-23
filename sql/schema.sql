@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS electives (
     course_code VARCHAR(30) UNIQUE NOT NULL,
     course_name VARCHAR(150) NOT NULL,
     credit_hours NUMERIC(3,1),
+    department VARCHAR(100),
     prerequisites TEXT[],
     semester SMALLINT,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
