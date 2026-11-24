@@ -2,7 +2,7 @@ streamlit
 pandas
 python-dotenv
 SQLAlchemy
-psycopg-binary
+psycopg[binary]
 supabase<3
 langchain
 langchain-core
